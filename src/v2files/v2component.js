@@ -37,80 +37,86 @@ export default class RPSUI extends React.Component {
 
     //user choices
     rock(e) {
-        this.setState({ 
-            uChoice: "Rock" }, 
-            (e) => { this.result(e) ; 
-        });
+        this.setState({
+            uChoice: "Rock"
+        },
+            (e) => {
+                this.result(e);
+            });
     }
     paper(e) {
         this.setState({
-            uChoice: "Paper"}, 
-            (e) => { this.result(e) ;
-        });
+            uChoice: "Paper"
+        },
+            (e) => {
+                this.result(e);
+            });
     }
     scissors(e) {
         this.setState({
-            uChoice: "Scissors"},
-            (e) => { this.result(e) ;
-        });
+            uChoice: "Scissors"
+        },
+            (e) => {
+                this.result(e);
+            });
     }
 
     //win or lose
     win(e) {
         this.setState((uScore) => {
-            return {uScore: this.state.uScore + 1};
-          });
+            return { uScore: this.state.uScore + 1 };
+        });
     }
     lose(e) {
         this.setState((bScore) => {
-            return {bScore: this.state.bScore + 1};
-          });
+            return { bScore: this.state.bScore + 1 };
+        });
     }
-    
+
     //result if statement
     result(e) {
         //Rock
         if (this.state.uChoice === "Rock" && this.state.bChoice === "Rock") {
             this.setState({ result: "Looks like you're stuck between a rock and a hard place, its a draw." },
-            (e)=>{this.scoreCheck(e)})
+                (e) => { this.scoreCheck(e) })
 
         } else if (this.state.uChoice === "Rock" && this.state.bChoice === "Scissors") {
             this.setState({ result: "Rock breaks scissors, it's a win!" },
-            (e) => { this.win(e)},
-            (e)=>{this.scoreCheck(e)})
+                (e) => { this.win(e) },
+                (e) => { this.scoreCheck(e) })
 
         } else if (this.state.uChoice === "Rock" && this.state.bChoice === "Paper") {
             this.setState({ result: "Rock gets covered by paper, it's a loss." },
-            (e) => { this.lose(e)} ,
-            (e)=>{this.scoreCheck(e)})
-        //Paper
+                (e) => { this.lose(e) },
+                (e) => { this.scoreCheck(e) })
+            //Paper
         } else if (this.state.uChoice === "Paper" && this.state.bChoice === "Rock") {
             this.setState({ result: "Paper covers rock, it's a win!" },
-            (e) => { this.win(e)} ,
-            (e)=>{this.scoreCheck(e)})
+                (e) => { this.win(e) },
+                (e) => { this.scoreCheck(e) })
 
         } else if (this.state.uChoice === "Paper" && this.state.bChoice === "Paper") {
             this.setState({ result: "Theres more paper here than an empty office printer, its a draw." },
-            (e)=>{this.scoreCheck(e)})
+                (e) => { this.scoreCheck(e) })
 
         } else if (this.state.uChoice === "Paper" && this.state.bChoice === "Scissors") {
             this.setState({ result: "Paper gets cut but scissors, it's a loss." },
-            (e) => { this.lose(e)} ,
-            (e)=>{this.scoreCheck(e)})
-        //Scissors
+                (e) => { this.lose(e) },
+                (e) => { this.scoreCheck(e) })
+            //Scissors
         } else if (this.state.uChoice === "Scissors" && this.state.bChoice === "Rock") {
             this.setState({ result: "Scissors just cant cut rock, it's a loss." },
-            (e) => { this.lose(e)} ,
-            (e)=>{this.scoreCheck(e)})
+                (e) => { this.lose(e) },
+                (e) => { this.scoreCheck(e) })
 
         } else if (this.state.uChoice === "Scissors" && this.state.bChoice === "Paper") {
             this.setState({ result: "Scissors cuts paper, it's a win!" },
-            (e) => { this.win(e)} ,
-            (e)=>{this.scoreCheck(e)})
+                (e) => { this.win(e) },
+                (e) => { this.scoreCheck(e) })
 
         } else if (this.state.uChoice === "Scissors" && this.state.bChoice === "Scissors") {
             this.setState({ result: "On guard!, tis a draw." },
-            (e)=>{this.scoreCheck(e)})
+                (e) => { this.scoreCheck(e) })
         }
     }
 
@@ -119,14 +125,14 @@ export default class RPSUI extends React.Component {
             this.reset(e)
         }
     }
-    
+
 
     render() {
         return (
 
 
             //-------------------------------------------------------
-            <>
+            <div className='content'>
                 <button type='button' id="startReset" onClick={(e) => { this.reset(e) }}>Start/Reset</button>
                 <button type='button' id="rock" className="selection" onClick={(e) => { this.rock(e); this.bChoice(e) }}>Rock </button>
                 <button type='button' id="paper" className="selection" onClick={(e) => { this.paper(e); this.bChoice(e) }}>Paper </button>
@@ -139,7 +145,8 @@ export default class RPSUI extends React.Component {
                 <p>You chose: {this.state.uChoice}</p> <br />
                 <p>The Machine chose: {this.state.bChoice} </p> <br />
                 <p id="result">The Result is: {this.state.result}</p>
-            </>
+                <p>The code behind the game is <a href="https://github.com/PCloherty/rock-paper-scissors">available here</a>.</p>
+            </div>
             //--------------------------------------------------------------
         )
     }

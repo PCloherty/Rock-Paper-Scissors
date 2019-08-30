@@ -1,10 +1,11 @@
 import React from 'react'; 
-import {RPS, RPSCapsule} from './RPSfunctions.js'
-import './App.css';
+import {RPS, RPSCapsule} from './v1functions.js'
+import '../App.css';
 
 
 export default function App() {
   return (
+    
     <div className="content">
       <button type='button' id="startReset" onLoad={RPSCapsule} onClick={RPSCapsule}>Start/Reset</button>
       <button type='button' id="rock" className="selection" onClick={RPS} >Rock </button>
@@ -20,7 +21,7 @@ export default function App() {
       <br />
       <p id="result">Result: </p>
 
-      <p>The code behind the game is <a href="https://github.com/PCloherty/Portfolio/blob/master/src/content/Projects/IndividualProjects/RPSProject.js">available here</a>.</p>
+      <p>The code behind the game is <a href="https://github.com/PCloherty/rock-paper-scissors">available here</a>.</p>
 
     </div>
 
