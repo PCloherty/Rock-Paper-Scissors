@@ -21,7 +21,7 @@ export default function App() {
       <br />
       <p id="result">Result: </p>
 
-      <p>The code behind the game is <a href="https://github.com/PCloherty/rock-paper-scissors">available here</a>.</p>
+      <p>The code behind the game is <a href="https://github.com/PCloherty/rock-paper-scissors" rel="noopener noreferrer" target="_blank">available here</a>.</p>
 
     </div>
 

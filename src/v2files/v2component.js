@@ -151,7 +151,7 @@ export default class RPSUI extends React.Component {
                 <p>You chose: {this.state.uChoice}</p> <br />
                 <p>The Machine chose: {this.state.bChoice} </p> <br />
                 <p id="result" className={this.state.resultStyle}>The Result is: {this.state.result}</p>
-                <p>The code behind the game is <a href="https://github.com/PCloherty/rock-paper-scissors">available here</a>.</p>
+                <p>The code behind the game is <a href="https://github.com/PCloherty/rock-paper-scissors" rel="noopener noreferrer" target="_blank">available here</a>.</p>
             </div>
             //--------------------------------------------------------------
         )
