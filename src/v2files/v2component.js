@@ -63,16 +63,20 @@ export default class RPSUI extends React.Component {
             });
     }
 
+  
     //win or lose or draw
     win(e) {
-        this.setState({ uScore: this.state.uScore + 1 },
-            {resultStyle:"resultW"},
-            (e) => { this.scoreCheck(e) });
+        this.setState({resultStyle:"resultW"});
+        this.setState((uScore) => {
+            return { uScore: this.state.uScore + 1 };
+        },(e) => { this.scoreCheck(e) });
     }
     lose(e) {
-        this.setState({ bScore: this.state.bScore + 1 },
-            {resultStyle:"resultL"},
-            (e) => { this.scoreCheck(e) });
+        this.setState({resultStyle:"resultL"});
+        this.setState((bScore) => {
+            return { bScore: this.state.bScore + 1 };
+        },(e) => { this.scoreCheck(e) });
+
     }
     draw(e) {
         this.setState({resultStyle:"resultD"},
@@ -90,7 +94,9 @@ export default class RPSUI extends React.Component {
         } else if (this.state.uChoice === "Rock" && this.state.bChoice === "Scissors") {
             this.setState({ result: "Generally speaking rock actually blunts scissors, unless its a really really big boulder, but back to the game. It's a win!" },
                 (e) => { this.win(e) })
-              
+
+                
+
 
         } else if (this.state.uChoice === "Rock" && this.state.bChoice === "Paper") {
             this.setState({ result: "In the magical world of rock paper scissors, when paper covers rock, it nullifies rock completely. It's a loss." },
@@ -100,36 +106,39 @@ export default class RPSUI extends React.Component {
         } else if (this.state.uChoice === "Paper" && this.state.bChoice === "Rock") {
             this.setState({ result: "Well pay checks are worth more than stones, am I right? It's a win!" },
                 (e) => { this.win(e) })
-              
+
 
         } else if (this.state.uChoice === "Paper" && this.state.bChoice === "Paper") {
             this.setState({ result: "Theres more paper here than an empty office printer, its a draw." },
-            (e) => {this.draw(e)})      
+            (e) => {this.draw(e)})
+                
+
 
         } else if (this.state.uChoice === "Paper" && this.state.bChoice === "Scissors") {
             this.setState({ result: "Paper gets cut but scissors, it's a loss." },
                 (e) => { this.lose(e) })
-               
+
+
             //Scissors
         } else if (this.state.uChoice === "Scissors" && this.state.bChoice === "Rock") {
             this.setState({ result: "Scissors just cant cut rock, it's a loss." },
                 (e) => { this.lose(e) })
-               
+
 
         } else if (this.state.uChoice === "Scissors" && this.state.bChoice === "Paper") {
             this.setState({ result: "Scissors cuts payslips, it's a win!" },
                 (e) => { this.win(e) })
-               
+
 
         } else if (this.state.uChoice === "Scissors" && this.state.bChoice === "Scissors") {
             this.setState({ result: "En guarde! Tis a draw." },
-                (e) => {this.draw(e)})   
-               
+                (e) => {this.draw(e)})
+
         }
     }
 
     scoreCheck(e) {
-        if (this.state.uScore >= 5 || this.state.bScore >= 5) {
+        if (this.state.uScore > 5 || this.state.bScore > 5) {
             this.reset(e)
         }
     }
